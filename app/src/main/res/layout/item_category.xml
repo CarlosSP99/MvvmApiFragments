@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="90dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="50dp"
+    app:cardElevation="16dp"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/fondoCardCategories"
+    android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:text="Acción"
+
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:fontFamily="@font/josefinsansregular"
+            android:layout_height="match_parent"/>
+
+</androidx.cardview.widget.CardView>

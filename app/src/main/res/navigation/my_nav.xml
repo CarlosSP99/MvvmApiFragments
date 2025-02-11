@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/logInFragment">
+
+    <fragment
+        android:id="@+id/mainViewFragment"
+        android:name="com.utad.mvvm_api_fragments.mainView.ui.mainView.MainViewFragment"
+        android:label="fragment_main_view"
+        tools:layout="@layout/fragment_main_view" >
+        <action
+            android:id="@+id/action_mainViewFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+        <action
+            android:id="@+id/action_mainViewFragment_to_bookMarkedMoviesFragment"
+            app:destination="@id/bookMarkedMoviesFragment" />
+        <action
+            android:id="@+id/action_mainViewFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.utad.mvvm_api_fragments.mainView.ui.detail.DetailMovieFragment"
+        android:label="fragment_detail_movie"
+        tools:layout="@layout/fragment_detail_movie" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/singUpFragment"
+        android:name="com.utad.mvvm_api_fragments.mainView.ui.singUp.SingUpFragment"
+        android:label="fragment_sing_up"
+        tools:layout="@layout/fragment_sing_up" >
+        <action
+            android:id="@+id/action_singUpFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.utad.mvvm_api_fragments.mainView.ui.logIn.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_mainViewFragment"
+            app:destination="@id/mainViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookMarkedMoviesFragment"
+        android:name="com.utad.mvvm_api_fragments.mainView.ui.bookmark.BookMarkedMoviesFragment"
+        android:label="fragment_book_marked_movies"
+        tools:layout="@layout/fragment_book_marked_movies" >
+        <action
+            android:id="@+id/action_bookMarkedMoviesFragment_to_mainViewFragment"
+            app:destination="@id/mainViewFragment" />
+        <action
+            android:id="@+id/action_bookMarkedMoviesFragment_to_movieBookMarkedDetailFragment"
+            app:destination="@id/movieBookMarkedDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieBookMarkedDetailFragment"
+        android:name="com.utad.mvvm_api_fragments.mainView.ui.bookmarkDetail.MovieBookMarkedDetailFragment"
+        android:label="fragment_movie_book_marked_detail"
+        tools:layout="@layout/fragment_movie_book_marked_detail" >
+        <action
+            android:id="@+id/action_movieBookMarkedDetailFragment_to_bookMarkedMoviesFragment"
+            app:destination="@id/bookMarkedMoviesFragment" />
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="rojo">#CC0606</color>
+    <color name="fondo">#25316F</color>
+    <color name="fondoTB">#C50319</color>
+
+    <color name="fondoCardCategories">#C0C3D9</color>
+
+
+</resources>
