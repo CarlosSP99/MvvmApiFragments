@@ -61,7 +61,7 @@
             android:layout_marginBottom="25dp"
             android:fontFamily="@font/josefinsansbold"
             android:gravity="center"
-            android:text="!Bienvenido!"
+            android:text="@string/bienvenido"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
             android:layout_height="50dp"
             android:fontFamily="@font/josefinsansbold"
             android:gravity="center"
-            android:text="Próximos estrenos"
+            android:text="@string/pr_ximos_estrenos"
             android:textSize="28sp"
             app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
 
@@ -96,7 +96,7 @@
             android:layout_height="50dp"
             android:fontFamily="@font/josefinsansbold"
             android:gravity="center"
-            android:text="Películas más populares"
+            android:text="@string/pel_culas_m_s_populares"
             android:textSize="28sp"
             app:layout_constraintTop_toBottomOf="@+id/rvNowComing" />
 
@@ -118,7 +118,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/josefinsansbold"
             android:gravity="center"
-            android:text="Las mejores valoradas"
+            android:text="@string/las_mejores_valoradas"
             android:textSize="28sp"
             app:layout_constraintTop_toBottomOf="@+id/rvPopular" />
 
@@ -139,7 +139,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/josefinsansbold"
             android:gravity="center"
-            android:text="Películas del momento"
+            android:text="@string/pel_culas_del_momento"
             android:textSize="28sp"
             app:layout_constraintTop_toBottomOf="@+id/rvTopRated" />
 

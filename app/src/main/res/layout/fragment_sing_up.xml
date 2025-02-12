@@ -38,7 +38,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieEmail"
             android:layout_width="match_parent"
-            android:hint="Introduce el email"
+            android:hint="@string/introduce_el_email"
             android:inputType="textEmailAddress"
             android:layout_height="match_parent"/>
 
@@ -65,7 +65,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiePassword"
-            android:hint="Introduce la pass"
+            android:hint="@string/introduce_la_pass"
             android:layout_width="match_parent"
             android:inputType="textPassword"
             android:layout_height="match_parent"/>
@@ -93,7 +93,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiePasswordRepeat"
-            android:hint="Introduce de nuevo la pass"
+            android:hint="@string/introduce_de_nuevo_la_pass"
             android:layout_width="match_parent"
             android:inputType="textPassword"
             android:layout_height="match_parent"/>
@@ -119,7 +119,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieNombre"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -133,7 +133,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:enabled="false"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         android:layout_marginBottom="32dp"
         app:cornerRadius="23dp"
         app:layout_constraintBottom_toBottomOf="parent"

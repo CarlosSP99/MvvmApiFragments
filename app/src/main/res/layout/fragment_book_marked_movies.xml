@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Peliculas guardadas"
+                android:text="@string/peliculas_guardadas"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="26dp"
                 android:textSize="26dp"

@@ -9,8 +9,10 @@ import com.utad.mvvm_api_fragments.mainView.model.room.User
 interface UserDao {
     @Insert
     suspend fun insert(user: User)
+
     @Query("SELECT * FROM users WHERE email = :email")
     suspend fun checkEmail(email:String): User
+
     @Query("SELECT * FROM users WHERE first_name = :user AND pass = :password")
     suspend fun login(user:String, password:String): User
 

@@ -14,31 +14,28 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewViewModel@Inject constructor(private val repository: MovieRepository): ViewModel() {
+class MainViewViewModel @Inject constructor(private val repository: MovieRepository) : ViewModel() {
 
     private var _uiState = MutableStateFlow(uiStateMainView())
     val uiState: StateFlow<uiStateMainView> = _uiState
 
-    init{
+    init {
         getNowPlayingMovies(1)
     }
 
-     fun getNowPlayingMovies(page: Int) {
+    fun getNowPlayingMovies(page: Int) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                _uiState.update { currentState ->
-                    currentState.copy(
-                        moviesNowPlaying = repository.getNowPlayingMovies(page),
-                        moviesPopular = repository.getPopularMovies(page),
-                        moviesTopRated = repository.getTopRatedMovies(page),
-                        moviesUpcoming = repository.getUpcomingMovies(page),
-                        isLoading = false
-                    )
-                }
+            _uiState.update { currentState ->
+                currentState.copy(
+                    moviesNowPlaying = repository.getNowPlayingMovies(page),
+                    moviesPopular = repository.getPopularMovies(page),
+                    moviesTopRated = repository.getTopRatedMovies(page),
+                    moviesUpcoming = repository.getUpcomingMovies(page),
+                    isLoading = false
+                )
             }
         }
     }
-
 
 
 }

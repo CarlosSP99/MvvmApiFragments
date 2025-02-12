@@ -8,21 +8,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LogInViewModel@Inject constructor(private val repositoryRoom: repositoryRoom): ViewModel() {
+class LogInViewModel @Inject constructor(private val repositoryRoom: repositoryRoom) : ViewModel() {
 
-    fun login(user: String,
-              password: String,
-              navigateToMainView: () -> Unit,
-              onResult: (String) -> Unit
+    fun login(
+        user: String,
+        password: String,
+        navigateToMainView: () -> Unit,
+        onResult: (String) -> Unit
     ) {
         viewModelScope.launch {
             val result = repositoryRoom.login(user, password)
-            if (result!=null){
+            if (result != null) {
                 navigateToMainView()
                 onResult("Bienvenido")
             } else {
                 onResult("Comprueba las credenciales")
             }
-            }
         }
     }
+}

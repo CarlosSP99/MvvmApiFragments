@@ -2,4 +2,26 @@
     <string name="app_name">MVVM_API_FRAGMENTS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="peliculas_guardadas">Peliculas guardadas</string>
+    <string name="detalles">Detalles</string>
+    <string name="pel_culas_relacionadas">Películas relacionadas</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="descripcion">descripcion</string>
+    <string name="introduce_el_usuario">Introduce el usuario</string>
+    <string name="introduce_la_pass">Introduce la pass</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="pr_ximos_estrenos">Próximos estrenos</string>
+    <string name="pel_culas_m_s_populares">Películas más populares</string>
+    <string name="las_mejores_valoradas">Las mejores valoradas</string>
+    <string name="pel_culas_del_momento">Películas del momento</string>
+    <string name="bienvenido">!Bienvenido!</string>
+    <string name="detalles1">Detalles</string>
+    <string name="introduce_el_email">Introduce el email</string>
+    <string name="introduce_de_nuevo_la_pass">Introduce de nuevo la pass</string>
+    <string name="nombre">Nombre</string>
+    <string name="acci_n">Acción</string>
+    <string name="pilicula">Pilicula</string>
+    <string name="_8_5">8.5</string>
 </resources>

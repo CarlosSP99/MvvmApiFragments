@@ -32,7 +32,8 @@ class DetailMovieFragment : Fragment() {
     private val movieId by lazy { args.movieId }
     private lateinit var adapterRelatedMovies: MovieAdapter
     private lateinit var categoryAdapter: CategoryAdapter
-    private var bookMarked=false
+    private var bookMarked = false
+
     // donde guardaré la pelicula
     private var movie: SingleMovie = SingleMovie()
 
@@ -49,12 +50,12 @@ class DetailMovieFragment : Fragment() {
         }
 
         binding.ivBookMark.setOnClickListener {
-            bookMarked=!bookMarked
+            bookMarked = !bookMarked
             if (bookMarked) {
                 viewModel.bookMarkMovie(movie)
                 displayMSG(msg = "La pelicula ${movie.title} ha sido añadida a favoritos")
                 binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_full)
-            } else{
+            } else {
                 viewModel.unbookMarkMovie(movie)
                 displayMSG(msg = "La pelicula ${movie.title} ha sido eliminada de favoritos")
                 binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
@@ -98,47 +99,47 @@ class DetailMovieFragment : Fragment() {
         lifecycleScope.launch {
             // Solo observar cuando el Fragment está en STARTED o RESUMED
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-            viewModel.uiState.collect{
-                if(it.movie!=null){
-                    binding.tvTitle.text = it.movie.title
-                    binding.tvDescripcion.text = it.movie.overview
-                    binding.tvDate.text = it.movie.releaseDate
+                viewModel.uiState.collect {
+                    if (it.movie != null) {
+                        binding.tvTitle.text = it.movie.title
+                        binding.tvDescripcion.text = it.movie.overview
+                        binding.tvDate.text = it.movie.releaseDate
 
-                    Glide.with(binding.ivPoster.context)
-                        .load("${Constants.BASE_URL_IMG}${it.movie.posterPath}")
-                        .placeholder(R.drawable.icplaholdermovie)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(binding.ivPoster)
+                        Glide.with(binding.ivPoster.context)
+                            .load("${Constants.BASE_URL_IMG}${it.movie.posterPath}")
+                            .placeholder(R.drawable.icplaholdermovie)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(binding.ivPoster)
 
-                    if(!it.movie.genres.isNullOrEmpty()){
-                        val genre = it.movie.genres!![0].id
-                        viewModel.updateGenres(genre)
+                        if (!it.movie.genres.isNullOrEmpty()) {
+                            val genre = it.movie.genres!![0].id
+                            viewModel.updateGenres(genre)
+                        }
+
+                        it.movie.genres?.let { genreList -> categoryAdapter.updateList(genreList) }
+
+                        adapterRelatedMovies.updateList(it.relatedMovies!!)
+
+                        binding.pbLoading.visibility = if (it.isLoading) View.VISIBLE else View.GONE
+
+                        viewModel.checkIfbookMarkMovie(it.movie.id)
+
+
+                        if (it.bookMarked) {
+                            binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_full)
+                            bookMarked = true
+                        } else {
+                            binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
+                            bookMarked = false
+                        }
+                        movie = it.movie
                     }
-
-                    it.movie.genres?.let { genreList -> categoryAdapter.updateList(genreList) }
-
-                    adapterRelatedMovies.updateList(it.relatedMovies!!)
-
-                    binding.pbLoading.visibility = if (it.isLoading) View.VISIBLE else View.GONE
-
-                    viewModel.checkIfbookMarkMovie(it.movie.id)
-
-
-                    if (it.bookMarked){
-                        binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_full)
-                        bookMarked=true
-                    }else{
-                        binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
-                        bookMarked=false
-                    }
-                    movie=it.movie
                 }
             }
         }
     }
-    }
 
-    private fun displayMSG(msg: String){
+    private fun displayMSG(msg: String) {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 

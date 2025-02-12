@@ -61,31 +61,30 @@ class MovieBookMarkedDetailFragment : Fragment() {
     private fun paintRV() {
         lifecycleScope.launch {
             // Solo observar cuando el Fragment está en STARTED o RESUMED
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-            viewModel.uiState.collect { state ->
-                adapter.movieList = state.movie.genres!!
-                adapter.updateList(state.movie.genres!!)
-                binding.tvTitle.text = state.movie.title
-                binding.tvDescripcion.text = state.movie.overview
-                binding.tvDate.text = state.movie.releaseDate
-                Glide.with(binding.ivPoster.context)
-                    .load("${Constants.BASE_URL_IMG}${state.movie.posterPath}")
-                    .placeholder(R.drawable.icplaholdermovie)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(binding.ivPoster)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    adapter.movieList = state.movie.genres!!
+                    adapter.updateList(state.movie.genres!!)
+                    binding.tvTitle.text = state.movie.title
+                    binding.tvDescripcion.text = state.movie.overview
+                    binding.tvDate.text = state.movie.releaseDate
+                    Glide.with(binding.ivPoster.context)
+                        .load("${Constants.BASE_URL_IMG}${state.movie.posterPath}")
+                        .placeholder(R.drawable.icplaholdermovie)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(binding.ivPoster)
 
-                binding.pbLoading.visibility = if (state.isLoading) View.VISIBLE else View.GONE
+                    binding.pbLoading.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
+                }
             }
-        }
         }
     }
 
     private fun createRV() {
-       adapter = CategoryAdapter()
-        binding.rvCategories.adapter=adapter
+        adapter = CategoryAdapter()
+        binding.rvCategories.adapter = adapter
     }
-
 
 
 }

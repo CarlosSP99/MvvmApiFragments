@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SingUpViewModel@Inject constructor(private val repositoryRoom: repositoryRoom): ViewModel() {
+class SingUpViewModel @Inject constructor(private val repositoryRoom: repositoryRoom) :
+    ViewModel() {
 
 
     fun insertUser(
@@ -38,7 +39,7 @@ class SingUpViewModel@Inject constructor(private val repositoryRoom: repositoryR
 }
 
 
-enum class ResultRegister(val state: String){
+enum class ResultRegister(val state: String) {
     SUCCESS("Cuenta creada con éxito"),
     ERROR("Ha habido un error")
 }

@@ -57,7 +57,7 @@ class LogInFragment : Fragment() {
 
                 }
             })
-        }
+    }
 
 
     private fun checkFields() {
@@ -66,7 +66,7 @@ class LogInFragment : Fragment() {
             binding.tiePassword
         )
         fields.forEach {
-            it.addTextChangedListener{
+            it.addTextChangedListener {
                 checkFieldsIsNotEmpty()
             }
         }
@@ -88,19 +88,19 @@ class LogInFragment : Fragment() {
         viewModel.login(
             user,
             password,
-            {navigateToMainView()},
-            {displayMessage(it)})
+            { navigateToMainView() },
+            { displayMessage(it) })
     }
 
     private fun displayMessage(msg: String) {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun navigateToMainView(){
+    private fun navigateToMainView() {
         findNavController().navigate(R.id.action_logInFragment_to_mainViewFragment)
     }
 
-    private fun navigateToSingUp(){
+    private fun navigateToSingUp() {
         findNavController().navigate(R.id.action_logInFragment_to_singUpFragment)
     }
 

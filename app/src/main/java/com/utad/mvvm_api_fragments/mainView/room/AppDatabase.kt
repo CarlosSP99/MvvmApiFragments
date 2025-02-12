@@ -7,6 +7,8 @@ import com.utad.mvvm_api_fragments.mainView.model.room.User
 
 @Database(entities = [User::class, SingleMovieRoom::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun userDao(): UserDao
+
     abstract fun movieDao(): SingleMovieDao
 }

@@ -27,9 +27,9 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.ivPosterMovie)
 
-    binding.cvMovie.setOnClickListener {
-        onClickListener(item)
-    }
+        binding.cvMovie.setOnClickListener {
+            onClickListener(item)
+        }
 
 
     }

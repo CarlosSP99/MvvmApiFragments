@@ -18,7 +18,6 @@ class MovieBookMarkedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun render(item: SingleMovie,
                onClickListener: (SingleMovie) -> Unit,
                onClickRemoveListener: (SingleMovie) -> Unit) {
-        Log.i("ESTA SALIENDOamigo", item.title)
         binding.tvTitle.text = item.title
         binding.ivPosterMovie.setImageDrawable(null)
         binding.cvMovie.setOnClickListener {

@@ -14,23 +14,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BookMarkedMoviesViewModel@Inject constructor(private val room: repositoryRoom) :ViewModel(){
+class BookMarkedMoviesViewModel @Inject constructor(private val room: repositoryRoom) :
+    ViewModel() {
 
     private val _uiState = MutableStateFlow(uiStateMovieBookMark())
     val uiState: StateFlow<uiStateMovieBookMark> get() = _uiState
 
-   init {
-       getMoviesBookMarked()
-       Log.d("dasdadsadadsa", _uiState.value.movieBookMarkeds.toString())
-   }
+    init {
+        getMoviesBookMarked()
+        Log.d("dasdadsadadsa", _uiState.value.movieBookMarkeds.toString())
+    }
 
-    fun getMoviesBookMarked(){
+    fun getMoviesBookMarked() {
         viewModelScope.launch {
-                _uiState.update { currentState ->
-                    currentState.copy(
-                        movieBookMarkeds = room.getMoviesBookMarked(),
-                        isLoading = true
-                    )
+            _uiState.update { currentState ->
+                currentState.copy(
+                    movieBookMarkeds = room.getMoviesBookMarked(),
+                    isLoading = true
+                )
             }
         }
     }

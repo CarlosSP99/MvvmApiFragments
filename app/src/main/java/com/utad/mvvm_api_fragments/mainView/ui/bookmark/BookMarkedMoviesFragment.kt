@@ -49,13 +49,13 @@ class BookMarkedMoviesFragment : Fragment() {
 
     private fun paintRV() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-            viewModel.uiState.collect {state->
-                movieBookMarkedAdapter.movieList = state.movieBookMarkeds
-                movieBookMarkedAdapter.updateList(state.movieBookMarkeds)
-                // no entiendo porq no funciona el updatelist y me toca usar esto
-                movieBookMarkedAdapter.notifyDataSetChanged()
-            }
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    movieBookMarkedAdapter.movieList = state.movieBookMarkeds
+                    movieBookMarkedAdapter.updateList(state.movieBookMarkeds)
+                    // no entiendo porq no funciona el updatelist y me toca usar esto
+                    movieBookMarkedAdapter.notifyDataSetChanged()
+                }
 
             }
         }
@@ -63,32 +63,37 @@ class BookMarkedMoviesFragment : Fragment() {
 
     private fun createRV() {
         val layout = GridLayoutManager(requireContext(), 2)
-        movieBookMarkedAdapter= MovieBookMarkedAdapter(
-            onClickListener = {navigateToDetailView(it.id)},
-            onClickRemoveListener = {removeMovie(it)})
+        movieBookMarkedAdapter = MovieBookMarkedAdapter(
+            onClickListener = { navigateToDetailView(it.id) },
+            onClickRemoveListener = { removeMovie(it) })
         binding.rvMoviesBookMarked.apply {
             adapter = movieBookMarkedAdapter
             layoutManager = layout
         }
     }
 
-    fun removeMovie(movie: SingleMovie){
+    fun removeMovie(movie: SingleMovie) {
         lifecycleScope.launch {
             viewModel.removeMovie(movie)
             displayMSG("Pelicula borrada de favoritos")
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-            viewModel.uiState.collect{
-                movieBookMarkedAdapter.movieList = it.movieBookMarkeds
-                movieBookMarkedAdapter.updateList(it.movieBookMarkeds)
-            }
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect {
+                    movieBookMarkedAdapter.movieList = it.movieBookMarkeds
+                    movieBookMarkedAdapter.updateList(it.movieBookMarkeds)
+                }
             }
         }
     }
 
-    fun navigateToDetailView(movieId: Int){
-        findNavController().navigate(BookMarkedMoviesFragmentDirections.actionBookMarkedMoviesFragmentToMovieBookMarkedDetailFragment(movieId))
+    fun navigateToDetailView(movieId: Int) {
+        findNavController().navigate(
+            BookMarkedMoviesFragmentDirections.actionBookMarkedMoviesFragmentToMovieBookMarkedDetailFragment(
+                movieId
+            )
+        )
     }
-    private fun displayMSG(msg: String){
+
+    private fun displayMSG(msg: String) {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 }

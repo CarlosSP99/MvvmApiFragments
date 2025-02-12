@@ -64,7 +64,7 @@ object di {
             context.applicationContext, // Usa el contexto de la aplicación
             AppDatabase::class.java,
             MOVIE_DATABASE_NAME // Nombre de la base de datos
-          // para no haber conflictos cuando modifico el esquema mi bbdd
+            // para no haber conflictos cuando modifico el esquema mi bbdd
         ).fallbackToDestructiveMigration()
             .build()
     }
@@ -80,7 +80,6 @@ object di {
     fun provideSingleMovieDao(appDatabase: AppDatabase): SingleMovieDao {
         return appDatabase.movieDao()
     }
-
 
 
 }

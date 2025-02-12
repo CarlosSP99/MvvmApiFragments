@@ -50,7 +50,7 @@ class SingUpFragment : Fragment() {
             email = email
         )
         if (password == rpassword) {
-            viewModel.insertUser(user, {navigateToLogin()}, {msg -> displayMessage(msg)})
+            viewModel.insertUser(user, { navigateToLogin() }, { msg -> displayMessage(msg) })
         } else {
             displayMessage("Las contraseñas no coinciden")
         }
@@ -87,7 +87,7 @@ class SingUpFragment : Fragment() {
             binding.tieNombre
         )
         fields.forEach {
-            it.addTextChangedListener{
+            it.addTextChangedListener {
                 checkFieldsIsNotEmpty()
             }
         }
@@ -106,12 +106,12 @@ class SingUpFragment : Fragment() {
         }
     }
 
-    private fun navigateToLogin(){
+    private fun navigateToLogin() {
         findNavController().navigate(R.id.action_singUpFragment_to_logInFragment)
     }
 
-    private fun displayMessage(msg:String){
-       Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
+    private fun displayMessage(msg: String) {
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
 }

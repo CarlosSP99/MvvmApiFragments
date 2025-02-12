@@ -22,6 +22,8 @@ data class SingleMovieRoom (
 
 fun SingleMovieRoom.toDomain(): SingleMovie{
 
+    // convierto la lista en 3 campos para no andar con varias tablas,
+    // mapeandolas y asi si no tiene genreX decir que será nulo
     val listOfGenres = listOfNotNull(genre1, genre2, genre3)
         .mapIndexedNotNull { index, genre ->
             if (genre != null) Genre(index + 1, genre) else null

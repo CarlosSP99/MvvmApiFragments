@@ -17,19 +17,19 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailMovieViewModel@Inject constructor(
+class DetailMovieViewModel @Inject constructor(
     private val repository: MovieRepository,
     private val roomRepository: repositoryRoom
-): ViewModel() {
+) : ViewModel() {
 
     private var _uiState = MutableStateFlow(uiStateDetailMovie())
     val uiState: StateFlow<uiStateDetailMovie> = _uiState
 
 
-    fun getMovieDetails(movieId: Int){
+    fun getMovieDetails(movieId: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                _uiState.update{ currentState ->
+                _uiState.update { currentState ->
                     currentState.copy(
                         movie = repository.getMovieDetails(movieId),
                         isLoading = false,
@@ -51,22 +51,20 @@ class DetailMovieViewModel@Inject constructor(
 
     fun bookMarkMovie(movie: SingleMovie) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                roomRepository.insertMovie(movie.toRoom())
-            }
+
+            roomRepository.insertMovie(movie.toRoom())
+
         }
     }
 
     fun checkIfbookMarkMovie(id: Int) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val res = roomRepository.checkMovie(id)
-                if (res != null) {
-                    _uiState.update { currentState ->
-                        currentState.copy(
-                            bookMarked = true
-                        )
-                    }
+            val res = roomRepository.checkMovie(id)
+            if (res != null) {
+                _uiState.update { currentState ->
+                    currentState.copy(
+                        bookMarked = true
+                    )
                 }
             }
         }
@@ -74,9 +72,9 @@ class DetailMovieViewModel@Inject constructor(
 
     fun unbookMarkMovie(movie: SingleMovie) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                roomRepository.removeMovie(movie.toRoom())
-            }
+
+            roomRepository.removeMovie(movie.toRoom())
+
         }
     }
 

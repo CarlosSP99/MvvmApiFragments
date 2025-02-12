@@ -37,7 +37,7 @@
             android:id="@+id/tieUser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Introduce el usuario"
+            android:hint="@string/introduce_el_usuario"
             android:inputType="textEmailAddress" />
 
 
@@ -61,7 +61,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiePassword"
-            android:hint="Introduce la pass"
+            android:hint="@string/introduce_la_pass"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -74,7 +74,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         app:cornerRadius="23dp"
         app:layout_constraintEnd_toEndOf="@+id/btnLogIn"
         app:layout_constraintStart_toStartOf="@+id/btnLogIn"
@@ -88,7 +88,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:enabled="false"
-        android:text="Iniciar sesión"
+        android:text="@string/iniciar_sesi_n"
         app:layout_constraintEnd_toEndOf="@+id/til_password"
         app:layout_constraintStart_toStartOf="@+id/til_password"
         app:layout_constraintTop_toBottomOf="@+id/til_password" />

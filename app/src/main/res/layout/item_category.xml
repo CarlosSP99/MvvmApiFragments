@@ -11,7 +11,7 @@
         <TextView
             android:id="@+id/tvCategory"
             android:layout_width="match_parent"
-            android:text="Acción"
+            android:text="@string/acci_n"
 
             android:textColor="@color/black"
             android:gravity="center"
