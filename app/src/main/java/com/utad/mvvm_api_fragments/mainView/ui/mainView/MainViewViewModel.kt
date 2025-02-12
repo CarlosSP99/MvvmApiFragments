@@ -2,7 +2,7 @@ package com.utad.mvvm_api_fragments.mainView.ui.mainView
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.utad.mvvm_api_fragments.mainView.domain.MovieRepository
+import com.utad.mvvm_api_fragments.mainView.model.repository.MovieRepository
 import com.utad.mvvm_api_fragments.mainView.model.domain.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

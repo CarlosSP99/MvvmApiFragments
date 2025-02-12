@@ -6,15 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.material.snackbar.Snackbar
 import com.utad.mvvm_api_fragments.R
 import com.utad.mvvm_api_fragments.databinding.FragmentMovieBookMarkedDetailBinding
-import com.utad.mvvm_api_fragments.mainView.domain.rvBookMarkedMovies.MovieBookMarkedAdapter
-import com.utad.mvvm_api_fragments.mainView.domain.rvCategories.CategoryAdapter
+import com.utad.mvvm_api_fragments.mainView.ui.adapter.rvCategories.CategoryAdapter
 import com.utad.mvvm_api_fragments.mainView.ui.detail.DetailMovieFragmentArgs
 import com.utad.mvvm_api_fragments.mainView.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,6 +60,8 @@ class MovieBookMarkedDetailFragment : Fragment() {
 
     private fun paintRV() {
         lifecycleScope.launch {
+            // Solo observar cuando el Fragment está en STARTED o RESUMED
+            repeatOnLifecycle(Lifecycle.State.STARTED){
             viewModel.uiState.collect { state ->
                 adapter.movieList = state.movie.genres!!
                 adapter.updateList(state.movie.genres!!)
@@ -74,11 +78,14 @@ class MovieBookMarkedDetailFragment : Fragment() {
 
             }
         }
+        }
     }
 
     private fun createRV() {
        adapter = CategoryAdapter()
         binding.rvCategories.adapter=adapter
     }
+
+
 
 }

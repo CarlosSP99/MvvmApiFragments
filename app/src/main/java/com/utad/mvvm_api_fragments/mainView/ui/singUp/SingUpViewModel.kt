@@ -3,7 +3,7 @@ package com.utad.mvvm_api_fragments.mainView.ui.singUp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.utad.mvvm_api_fragments.mainView.model.room.User
-import com.utad.mvvm_api_fragments.mainView.room.repositoryRoom
+import com.utad.mvvm_api_fragments.mainView.model.repository.repositoryRoom
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

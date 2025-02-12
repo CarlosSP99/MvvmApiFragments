@@ -1,6 +1,5 @@
 package com.utad.mvvm_api_fragments.mainView.ui.mainView
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,14 +10,15 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.utad.mvvm_api_fragments.R
 import com.utad.mvvm_api_fragments.databinding.FragmentMainViewBinding
-import com.utad.mvvm_api_fragments.mainView.domain.rv.MovieAdapter
+import com.utad.mvvm_api_fragments.mainView.ui.adapter.rv.MovieAdapter
 import com.utad.mvvm_api_fragments.mainView.model.domain.Movie
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -62,6 +62,8 @@ class MainViewFragment : Fragment() {
 
     private fun modifyRV() {
         lifecycleScope.launch {
+            // Solo observar cuando el Fragment está en STARTED o RESUMED
+            repeatOnLifecycle(Lifecycle.State.STARTED){
             viewModel.uiState.collect {
                 binding.pbLoading.visibility = if (it.isLoading) View.VISIBLE else View.GONE
 
@@ -78,6 +80,7 @@ class MainViewFragment : Fragment() {
                 adapterTopRated.updateList(it.moviesTopRated)
             }
         }
+    }
     }
 
     private fun navigateToDetail(movie: Movie){

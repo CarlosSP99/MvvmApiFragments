@@ -1,26 +1,24 @@
 package com.utad.mvvm_api_fragments.mainView.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.google.android.material.snackbar.Snackbar
 import com.utad.mvvm_api_fragments.R
 import com.utad.mvvm_api_fragments.databinding.FragmentDetailMovieBinding
-import com.utad.mvvm_api_fragments.mainView.domain.rv.MovieAdapter
-import com.utad.mvvm_api_fragments.mainView.domain.rvCategories.CategoryAdapter
-import com.utad.mvvm_api_fragments.mainView.model.domain.Movie
+import com.utad.mvvm_api_fragments.mainView.ui.adapter.rv.MovieAdapter
+import com.utad.mvvm_api_fragments.mainView.ui.adapter.rvCategories.CategoryAdapter
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
-import com.utad.mvvm_api_fragments.mainView.model.network.SingleMovieModel
 import com.utad.mvvm_api_fragments.mainView.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -54,9 +52,11 @@ class DetailMovieFragment : Fragment() {
             bookMarked=!bookMarked
             if (bookMarked) {
                 viewModel.bookMarkMovie(movie)
+                displayMSG(msg = "La pelicula ${movie.title} ha sido añadida a favoritos")
                 binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_full)
             } else{
                 viewModel.unbookMarkMovie(movie)
+                displayMSG(msg = "La pelicula ${movie.title} ha sido eliminada de favoritos")
                 binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
             }
         }
@@ -96,6 +96,8 @@ class DetailMovieFragment : Fragment() {
 
     private fun paintUI() {
         lifecycleScope.launch {
+            // Solo observar cuando el Fragment está en STARTED o RESUMED
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.uiState.collect{
                 if(it.movie!=null){
                     binding.tvTitle.text = it.movie.title
@@ -134,6 +136,10 @@ class DetailMovieFragment : Fragment() {
             }
         }
     }
+    }
 
+    private fun displayMSG(msg: String){
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
+    }
 
 }

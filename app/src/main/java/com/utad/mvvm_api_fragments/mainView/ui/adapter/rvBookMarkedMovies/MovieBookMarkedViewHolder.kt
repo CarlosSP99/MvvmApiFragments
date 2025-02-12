@@ -1,4 +1,4 @@
-package com.utad.mvvm_api_fragments.mainView.domain.rvBookMarkedMovies
+package com.utad.mvvm_api_fragments.mainView.ui.adapter.rvBookMarkedMovies
 
 import android.util.Log
 import android.view.View
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.utad.mvvm_api_fragments.R
-import com.utad.mvvm_api_fragments.databinding.ItemMovieBinding
 import com.utad.mvvm_api_fragments.databinding.ItemMoviebookmarkedBinding
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
 import com.utad.mvvm_api_fragments.mainView.util.Constants

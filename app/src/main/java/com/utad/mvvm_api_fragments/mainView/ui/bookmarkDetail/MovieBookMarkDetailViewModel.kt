@@ -2,10 +2,9 @@ package com.utad.mvvm_api_fragments.mainView.ui.bookmarkDetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.utad.mvvm_api_fragments.mainView.model.domain.Movie
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
 import com.utad.mvvm_api_fragments.mainView.model.room.toDomain
-import com.utad.mvvm_api_fragments.mainView.room.repositoryRoom
+import com.utad.mvvm_api_fragments.mainView.model.repository.repositoryRoom
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

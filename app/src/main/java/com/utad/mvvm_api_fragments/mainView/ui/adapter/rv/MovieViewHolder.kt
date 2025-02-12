@@ -1,4 +1,4 @@
-package com.utad.mvvm_api_fragments.mainView.domain.rv
+package com.utad.mvvm_api_fragments.mainView.ui.adapter.rv
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

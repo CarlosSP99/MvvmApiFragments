@@ -1,9 +1,8 @@
 package com.utad.mvvm_api_fragments.mainView.ui.logIn
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.utad.mvvm_api_fragments.mainView.room.repositoryRoom
+import com.utad.mvvm_api_fragments.mainView.model.repository.repositoryRoom
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,9 +1,8 @@
-package com.utad.mvvm_api_fragments.mainView.domain
+package com.utad.mvvm_api_fragments.mainView.model.repository
 
 import com.utad.mvvm_api_fragments.mainView.util.Constants.API_TOKEN
 import com.utad.mvvm_api_fragments.mainView.model.domain.Movie
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
-import com.utad.mvvm_api_fragments.mainView.model.network.SingleMovieModel
 import com.utad.mvvm_api_fragments.mainView.model.network.toDomain
 import com.utad.mvvm_api_fragments.mainView.network.MovieService
 import javax.inject.Inject

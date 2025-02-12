@@ -1,10 +1,11 @@
-package com.utad.mvvm_api_fragments.mainView.room
+package com.utad.mvvm_api_fragments.mainView.model.repository
 
 import android.util.Log
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
 import com.utad.mvvm_api_fragments.mainView.model.room.SingleMovieRoom
 import com.utad.mvvm_api_fragments.mainView.model.room.User
 import com.utad.mvvm_api_fragments.mainView.model.room.toDomain
+import com.utad.mvvm_api_fragments.mainView.room.AppDatabase
 import javax.inject.Inject
 
 class repositoryRoom@Inject constructor(

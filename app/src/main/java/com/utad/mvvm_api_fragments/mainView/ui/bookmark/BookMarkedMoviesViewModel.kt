@@ -1,19 +1,16 @@
 package com.utad.mvvm_api_fragments.mainView.ui.bookmark
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
 import com.utad.mvvm_api_fragments.mainView.model.domain.toRoom
-import com.utad.mvvm_api_fragments.mainView.room.repositoryRoom
+import com.utad.mvvm_api_fragments.mainView.model.repository.repositoryRoom
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel

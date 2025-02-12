@@ -1,15 +1,11 @@
-package com.utad.mvvm_api_fragments.mainView.domain.rvBookMarkedMovies
+package com.utad.mvvm_api_fragments.mainView.ui.adapter.rvBookMarkedMovies
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.utad.mvvm_api_fragments.R
-import com.utad.mvvm_api_fragments.mainView.domain.rv.MovieViewHolder
-import com.utad.mvvm_api_fragments.mainView.domain.rv.ProductionDiffCallback
-import com.utad.mvvm_api_fragments.mainView.model.domain.Movie
 import com.utad.mvvm_api_fragments.mainView.model.domain.SingleMovie
-import com.utad.mvvm_api_fragments.mainView.model.network.Genre
 
 class MovieBookMarkedAdapter(
         var movieList: List<SingleMovie> = emptyList(),
